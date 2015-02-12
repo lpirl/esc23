@@ -1,0 +1,24 @@
+    <Route id="52" name="monitor" default-type="audio" flags="MonitorOut" active="yes" phase-invert="00" denormal-protection="no" meter-point="MeterPostFader" meter-type="MeterPeak" order-key="1" self-solo="no" soloed-by-upstream="0" soloed-by-downstream="0" solo-isolated="no" solo-safe="no">
+      <IO name="monitor" id="58" direction="Input" default-type="audio" user-latency="0">
+        <Port type="audio" name="monitor/audio_in 1" />
+        <Port type="audio" name="monitor/audio_in 2" />
+      </IO>
+      <IO name="monitor" id="59" direction="Output" default-type="audio" user-latency="0">
+        <Port type="audio" name="monitor/audio_out 1"/>
+        <Port type="audio" name="monitor/audio_out 2"/>
+      </IO>
+      <Controllable name="solo" id="54" flags="Toggle" value="0.000000000000"/>
+      <Controllable name="mute" id="56" flags="Toggle" value="0.000000000000"/>
+      <MuteMaster mute-point="PreFader,PostFader,Listen,Main" muted="no"/>
+      <RemoteControl id="0"/>
+      <Processor id="65" name="return 1" active="yes" user-latency="0" own-input="yes" own-output="yes" type="intreturn" bitslot="0"/>
+      <Processor id="70" name="MonitorOut" active="yes" user-latency="0" type="monitor" dim-level="0.251188635826" solo-boost-level="1" cut-all="no" dim-all="no" mono="no" channels="2">
+        <Channel id="0" cut="no" invert="no" dim="no" solo="no"/>
+        <Channel id="1" cut="no" invert="no" dim="no" solo="no"/>
+      </Processor>
+      <Processor id="60" name="Amp" active="yes" user-latency="0" type="amp">
+        <Controllable name="gaincontrol" id="62" flags="GainLike" value="1.000000000000"/>
+      </Processor>
+      <Processor id="63" name="meter-monitor" active="yes" user-latency="0" type="meter"/>
+      <Processor id="64" name="monitor" active="yes" user-latency="0" own-input="yes" own-output="no" output="monitor" type="main-outs" role="Main"/>
+    </Route>
