@@ -36,9 +36,9 @@ parser.add_argument('-b', type=str, dest="backup_file",
                     default=BACKUP_FILE_DEFAULT,
                     help='File to backup the Ardour3 session to ')
 
-a2_file_DEFAULT = "default Ardour3 created backup file from Ardour2 session."
+A2_FILE_DEFAULT = "default Ardour3 created backup file from Ardour2 session."
 parser.add_argument('a2_file', type=str, nargs='?',
-                    default=a2_file_DEFAULT,
+                    default=A2_FILE_DEFAULT,
                     help='The Ardour2 session file to read from')
 
 parser.add_argument('a3_file', type=str,
@@ -66,7 +66,7 @@ if args.backup_file == BACKUP_FILE_DEFAULT:
         in_a3_path, datetime.now().isoformat(), in_a3_ext)
 
 # arg sanitize: Ardour2 session file
-if args.a2_file == a2_file_DEFAULT:
+if args.a2_file == A2_FILE_DEFAULT:
     in_a3_path, in_a3_ext = splitext(args.a3_file)
     args.a2_file = "%s-2000%s" % (
         in_a3_path, in_a3_ext)
