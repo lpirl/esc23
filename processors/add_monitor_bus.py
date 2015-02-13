@@ -1,22 +1,27 @@
-from processors import AbstractBaseProcessor
-
+from sys import argv
+from os.path import join as path_join, dirname
 import logging
 from xml.etree.ElementTree import ElementTree
+
+from processors import AbstractBaseProcessor
+
+BASEDIR = dirname(argv[0]) or '.'
 
 class AddMonitorBus(AbstractBaseProcessor):
 
     order = 1000
-    MONITOR_BUS_FILE = "processors/static/monitor_bus.xmlpart"
+    MONITOR_BUS_FILE = path_join(BASEDIR,
+        "processors/static/monitor_bus.xmlpart")
 
     def post_init(self):
         self.monitor_bus = ElementTree(file=self.MONITOR_BUS_FILE)
         self.enabled = True
 
-    def add_args(self, parser):
-        parser.add_argument('-m', '--no-monitor', action='store_true', default=False,
-                            help='Do NOT insert the Ardour3-style monitor bus')
+    def add_cli_args(self, parser):
+        parser.add_argument('--no-monitor', action='store_true', default=False,
+                            help='Do not insert the Ardour3-style monitor bus')
 
-    def read_args(self, args):
+    def read_cli_args(self, args):
         self.enabled = args.no_monitor
 
     def process(self, tree):

@@ -31,14 +31,14 @@ class AbstractBaseProcessor(metaclass=abc.ABCMeta):
         pass
 
 
-    def add_args(self, parser):
+    def add_cli_args(self, parser):
         """
         Adds this class' arguments to the parser .
         """
         pass
 
 
-    def read_args(self, parser):
+    def read_cli_args(self, args):
         """
         Reads arguments of interest specified using the CLI.
         """
