@@ -12,3 +12,5 @@ The tested scenario is to apply this script to a session that is *just* converte
 #. **apply this script** to the just saved session file
 #. open the resulting, extended Ardour3 session
 #. start working
+
+See ``./esc23.py -h`` for help.
