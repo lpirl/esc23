@@ -39,7 +39,7 @@ class Esc23(object):
         for processor in self.processors:
             processor.read_cli_args(args)
 
-    def process(self, in_a2, in_a3):
+    def process(self, in_a3):
         """
         Does the work and returns the modified ElementTree.
         """
