@@ -18,3 +18,10 @@ See ``./esc23.py -h`` for help.
 **Contribute:** See ``processors/add_monitor_bus.py`` for a simple example.
 Subclasses of ``AbstractBaseProcessor`` in the module ``processors``
 will be loaded and executed automagically.
+
+------
+
+Design:
+
+* no focus on performance
+* no dealing with broken XML / invalid session files
