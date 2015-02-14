@@ -25,3 +25,4 @@ Design:
 
 * no focus on performance
 * no dealing with broken XML / invalid session files
+* operations are idempotent
