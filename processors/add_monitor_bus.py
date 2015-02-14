@@ -24,10 +24,10 @@ class AddMonitorBus(AbstractBaseProcessor):
     def read_cli_args(self, args):
         self.enabled = args.no_monitor
 
-    def process(self, tree):
-        if tree.findall(".//Route[@name='monitor']"):
+    def process(self, a2_tree, a3_tree):
+        if a3_tree.findall(".//Route[@name='monitor']"):
             logging.debug("monitor bus already exists - skipping")
             return
-        routes = tree.find("Routes")
+        routes = a3_tree.find("Routes")
         logging.debug("adding monitor bus")
         routes.append(self.monitor_bus.getroot())

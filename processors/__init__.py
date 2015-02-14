@@ -45,9 +45,10 @@ class AbstractBaseProcessor(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def process(self, tree):
+    def process(self, a2_tree, a3_tree):
         """
-        Actually implements alteration of tree.
+        Modifies the ``a3_tree`` with possibly additional information
+        from ``a2_tree``.
         """
         pass
 

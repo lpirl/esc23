@@ -39,12 +39,11 @@ class Esc23(object):
         for processor in self.processors:
             processor.read_cli_args(args)
 
-    def process(self, in_a3):
+    def process(self, a2_tree, a3_tree):
         """
-        Does the work and returns the modified ElementTree.
+        Modifies the ``a3_tree`` and provides the ``a2_tree`` as
+        an information resource to the processors.
         """
-        out_tree = deepcopy(in_a3)[0]
         for processor in self.processors:
             logging.debug("running processor: %s" % processor.__class__.__name__)
-            processor.process(out_tree)
-        return out_tree
+            processor.process(a2_tree, a3_tree)

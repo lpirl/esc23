@@ -10,15 +10,15 @@ class ReassignPlaylistsToTracks(AbstractBaseProcessor):
         self.enabled = True
 
     def add_cli_args(self, parser):
-        parser.add_argument('--no-playlist-reassign', action='store_true',
+        parser.add_argument('--no-playlists', action='store_true',
                             default=False,
                             help='Do not attempt to re-assign playlists to tracks')
 
     def read_cli_args(self, args):
-        self.enabled = args.no_playlist_reassign
+        self.enabled = args.no_playlists
 
-    def process(self, tree):
-        for playlist in tree.iterfind(".//Playlist"):
+    def process(self, a2_tree, a3_tree):
+        for playlist in a3_tree.iterfind(".//Playlist"):
             playlist_id = int(playlist.get("id"))
 
             diskstream_id = playlist.get("orig-track-id")
@@ -30,20 +30,20 @@ class ReassignPlaylistsToTracks(AbstractBaseProcessor):
                 continue
             diskstream_id = int(diskstream_id)
 
-            if tree.find(".//Route[@id='%i']" % diskstream_id) is not None:
+            if a3_tree.find(".//Route[@id='%i']" % diskstream_id) is not None:
                 logging.debug(
                     "playlist %i already assigned to a route" % playlist_id +
                     " - skipping"
                 )
                 continue
 
-            if tree.find(".//Diskstream[@id='%u']" % diskstream_id) is None:
+            if a3_tree.find(".//Diskstream[@id='%u']" % diskstream_id) is None:
                 logging.debug(
                     "cannot find Diskstream %i" % diskstream_id
                 )
                 continue
 
-            route = tree.find(".//Diskstream[@id='%u'].." % diskstream_id)
+            route = a3_tree.find(".//Diskstream[@id='%u'].." % diskstream_id)
             if not route.tag == "Route":
                 logging.debug(
                     "expected to find a Route but found a %s" % route.tag +
