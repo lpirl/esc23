@@ -31,7 +31,7 @@ parser.add_argument('-b', type=str, dest="backup_file",
                     help='File to backup the Ardour3 session to ')
 
 parser.add_argument('a3_file', type=str,
-                    help='The Ardour3 session file to read from')
+                    help='The Ardour3 session file to extend')
 
 # set up logger
 logging.getLogger().name = "esc23"
