@@ -1,5 +1,4 @@
 import logging
-from copy import deepcopy
 from inspect import getmembers, isclass
 
 import processors as processors_module

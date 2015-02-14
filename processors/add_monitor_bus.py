@@ -11,7 +11,7 @@ class AddMonitorBus(AbstractBaseProcessor):
 
     order = 1000
     MONITOR_BUS_FILE = path_join(BASEDIR,
-        "processors/static/monitor_bus.xmlpart")
+        "processors/static/monitor.xmlpart")
 
     def post_init(self):
         self.monitor_bus = ElementTree(file=self.MONITOR_BUS_FILE)
