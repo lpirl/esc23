@@ -22,7 +22,7 @@ class ReassignPlaylistsToTracks(AbstractBaseProcessor):
             playlist_id = int(playlist.get("id"))
 
             diskstream_id = playlist.get("orig-track-id")
-            if not diskstream_id:
+            if diskstream_id is None:
                 logging.debug(
                     "playlist %i not assigned to a Diskstream" % playlist_id +
                     " - skipping"
@@ -30,21 +30,20 @@ class ReassignPlaylistsToTracks(AbstractBaseProcessor):
                 continue
             diskstream_id = int(diskstream_id)
 
-            if tree.find(".//Route[@id='%i']" % diskstream_id):
+            if tree.find(".//Route[@id='%i']" % diskstream_id) is not None:
                 logging.debug(
                     "playlist %i already assigned to a route" % playlist_id +
                     " - skipping"
                 )
                 continue
 
-            diskstream = tree.find(".//Diskstream[@id='%u']" % diskstream_id)
-            if not diskstream:
+            if tree.find(".//Diskstream[@id='%u']" % diskstream_id) is None:
                 logging.debug(
                     "cannot find Diskstream %i" % diskstream_id
                 )
                 continue
 
-            route = diskstream.find("..")
+            route = tree.find(".//Diskstream[@id='%u'].." % diskstream_id)
             if not route.tag == "Route":
                 logging.debug(
                     "expected to find a Route but found a %s" % route.tag +
