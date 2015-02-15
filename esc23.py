@@ -69,7 +69,10 @@ if args.a2_file == A2_FILE_DEFAULT:
 if args.backup_file == BACKUP_FILE_DEFAULT:
     in_a3_path, in_a3_ext = splitext(args.a3_file)
     args.backup_file = "%s_pre-esc23_%s%s" % (
-        in_a3_path, datetime.now().isoformat(), in_a3_ext)
+        in_a3_path,
+        datetime.now().strftime("%Y-%m-%d_%H-%M-%S"),
+        in_a3_ext
+    )
 
 # load existing sessions
 logging.debug("loading from '%s'" % args.a2_file)
