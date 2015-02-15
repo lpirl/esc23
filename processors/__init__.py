@@ -44,6 +44,17 @@ class AbstractBaseProcessor(metaclass=abc.ABCMeta):
         """
         pass
 
+    @staticmethod
+    def get_and_increment_id_counter(tree):
+        """
+        Reads and returns the id counter from the session (``tree``)
+        ans saves the id counter incremented by one.
+        """
+        session_element = tree.getroot()
+        next_id = int(session_element.get("id-counter"))
+        session_element.set("id-counter", str(next_id+1))
+        return next_id
+
     @abc.abstractmethod
     def process(self, a2_tree, a3_tree):
         """

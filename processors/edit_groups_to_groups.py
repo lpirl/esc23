@@ -43,7 +43,7 @@ class EditGroupsToGroups(AbstractBaseProcessor):
 
         new_groups_element = a3_tree.find("RouteGroups")
 
-        new_group_id = int(a3_tree.getroot().get("id-counter"))
+        new_group_id = self.get_and_increment_id_counter(a3_tree)
 
         for old_group, old_routes in edit_groups.items():
 
@@ -111,5 +111,3 @@ class EditGroupsToGroups(AbstractBaseProcessor):
             new_group.set("routes", ' '.join(new_route_ids_as_strings))
 
             new_group_id += 1
-
-        a3_tree.getroot().set("id-counter", str(new_group_id))

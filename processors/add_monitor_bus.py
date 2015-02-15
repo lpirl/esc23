@@ -30,4 +30,9 @@ class AddMonitorBus(AbstractBaseProcessor):
             return
         routes = a3_tree.find("Routes")
         logging.debug("adding monitor bus")
-        routes.append(self.monitor_bus.getroot())
+        monitor_element = self.monitor_bus.getroot()
+        monitor_element.set(
+            "id",
+            str(self.get_and_increment_id_counter(a3_tree))
+        )
+        routes.append(monitor_element)

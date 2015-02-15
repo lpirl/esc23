@@ -1,4 +1,4 @@
-    <Route id="52" name="monitor" default-type="audio" flags="MonitorOut" active="yes" phase-invert="00" denormal-protection="no" meter-point="MeterPostFader" meter-type="MeterPeak" order-key="1" self-solo="no" soloed-by-upstream="0" soloed-by-downstream="0" solo-isolated="no" solo-safe="no">
+    <Route name="monitor" default-type="audio" flags="MonitorOut" active="yes" phase-invert="00" denormal-protection="no" meter-point="MeterPostFader" meter-type="MeterPeak" order-key="1" self-solo="no" soloed-by-upstream="0" soloed-by-downstream="0" solo-isolated="no" solo-safe="no">
       <IO name="monitor" id="58" direction="Input" default-type="audio" user-latency="0">
         <Port type="audio" name="monitor/audio_in 1" />
         <Port type="audio" name="monitor/audio_in 2" />
