@@ -8,7 +8,7 @@ The tested scenario is to apply this script to a session that has been *just* co
 #. backup your Ardour2 project
 #. open your Ardour2 session in Ardour3
 #. Ardour3 will convert the session (but leave out a few things)
-#. save the Ardour3 session
+#. save the Ardour3 session (yes, explicitly)
 #. **apply this script** to the just saved session file
 #. open the resulting, extended Ardour3 session
 #. start working
